@@ -1,0 +1,30 @@
+STORAGE: NONE
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    Expecto (10.2.1)
+      FSharp.Core (>= 7.0.200) - restriction: >= net6.0
+      Mono.Cecil (>= 0.11.4 < 1.0) - restriction: >= net6.0
+    FSharp.Core (9.0.100) - content: none
+    Microsoft.CodeCoverage (17.12) - restriction: || (>= net462) (>= netcoreapp3.1)
+    Microsoft.NET.Test.Sdk (17.12)
+      Microsoft.CodeCoverage (>= 17.12) - restriction: || (>= net462) (>= netcoreapp3.1)
+      Microsoft.TestPlatform.TestHost (>= 17.12) - restriction: >= netcoreapp3.1
+    Microsoft.TestPlatform.ObjectModel (17.12) - restriction: >= netcoreapp3.1
+      System.Reflection.Metadata (>= 1.6) - restriction: || (>= net462) (>= netstandard2.0)
+    Microsoft.TestPlatform.TestHost (17.12) - restriction: >= netcoreapp3.1
+      Microsoft.TestPlatform.ObjectModel (>= 17.12) - restriction: >= netcoreapp3.1
+      Newtonsoft.Json (>= 13.0.1) - restriction: >= netcoreapp3.1
+    Mono.Cecil (0.11.6) - restriction: >= net6.0
+    Newtonsoft.Json (13.0.3) - restriction: >= netcoreapp3.1
+    System.Collections.Immutable (9.0) - restriction: || (&& (>= net462) (>= netcoreapp3.1)) (>= net6.0) (&& (>= net8.0) (< net9.0)) (&& (< net8.0) (>= netcoreapp3.1))
+      System.Memory (>= 4.5.5) - restriction: || (>= net462) (&& (< net8.0) (>= netstandard2.0))
+      System.Runtime.CompilerServices.Unsafe (>= 6.0) - restriction: || (>= net462) (&& (< net8.0) (>= netstandard2.0))
+    System.Memory (4.6) - restriction: || (&& (>= net462) (>= net6.0)) (&& (>= net462) (>= netcoreapp3.1)) (&& (>= net6.0) (< net8.0)) (&& (< net8.0) (>= netcoreapp3.1))
+    System.Reflection.Metadata (9.0) - restriction: >= netcoreapp3.1
+      System.Collections.Immutable (>= 9.0) - restriction: || (>= net462) (&& (>= net8.0) (< net9.0)) (&& (< net8.0) (>= netstandard2.0))
+      System.Memory (>= 4.5.5) - restriction: || (>= net462) (&& (< net8.0) (>= netstandard2.0))
+    System.Runtime.CompilerServices.Unsafe (6.1) - restriction: || (&& (>= net462) (>= net6.0)) (&& (>= net6.0) (< net8.0))
+    YoloDev.Expecto.TestSdk (0.14.3)
+      Expecto (>= 10.0 < 11.0) - restriction: >= net6.0
+      FSharp.Core (>= 7.0.200) - restriction: >= net6.0
+      System.Collections.Immutable (>= 6.0) - restriction: >= net6.0
