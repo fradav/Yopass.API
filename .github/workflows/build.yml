@@ -1,0 +1,78 @@
+name: Build, test and publish
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - "**/*.md"
+      - "LICENSE"
+  pull_request:
+    branches: [ "main" ]
+    paths-ignore:
+      - "**/*.md"
+      - "LICENSE"
+        
+permissions:
+  contents: write
+  
+jobs:
+  build:
+    if: ${{ !startsWith(github.event.head_commit.message, '[skip-ci]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            9.0.x
+            8.0.x
+
+      - name: Restore tools
+        run: dotnet tool restore
+
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build -c Release --no-restore
+
+      - name: Test
+        run: dotnet test -c Release --no-restore --no-build --verbosity normal
+      
+      - name: Pack
+        run: dotnet pack -c Release -o ./artifacts --no-build --no-restore
+
+      - name: Extract version from Directory.Build.props
+        id: get-version
+        shell: pwsh
+        run: |
+          [xml]$props = Get-Content -path 'Directory.Build.props'
+          $version = $props.Project.PropertyGroup.Version
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+      - name: Check if tag exists
+        id: check-tag
+        run: |
+          git fetch --tags
+          if (git tag -l "v${{ steps.get-version.outputs.version }}") {
+            echo "Tag already exists"
+            echo "tag_exists=true" >> $env:GITHUB_OUTPUT
+          } else {
+            echo "Tag does not exist"
+            echo "tag_exists=false" >> $env:GITHUB_OUTPUT
+          }
+        shell: pwsh
+
+      - name: Create and push tag
+        if: steps.check-tag.outputs.tag_exists == 'false' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag -a "v${{ steps.get-version.outputs.version }}" -m "Release v${{ steps.get-version.outputs.version }}"
+          git push origin "v${{ steps.get-version.outputs.version }}"
+
+      - name: Push NuGet package
+        if: steps.check-tag.outputs.tag_exists == 'false' && github.ref == 'refs/heads/main'
+        run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

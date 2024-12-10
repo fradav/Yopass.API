@@ -1,9 +1,17 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
-nuget FSharp.Core >= 6.0 content: none
 
-group Test.Yopass.CLI.Wrap
-    nuget Expecto >= 9.0
-    nuget Microsoft.NET.Test.Sdk >= 17.0
+nuget BouncyCastle.Cryptography
+nuget FsHttp
+nuget FSharp.Core
+
+group Test.Yopass
+    source https://api.nuget.org/v3/index.json
+
+    storage: none
+
+    nuget Expecto
     nuget YoloDev.Expecto.TestSdk
+    nuget Microsoft.NET.Test.Sdk
+    nuget Testcontainers

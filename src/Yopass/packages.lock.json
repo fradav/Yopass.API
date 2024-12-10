@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net9.0": {
+      "BouncyCastle.Cryptography": {
+        "type": "Direct",
+        "requested": "[2.5.1, )",
+        "resolved": "2.5.1",
+        "contentHash": "zy8TMeTP+1FH2NrLaNZtdRbBdq7u5MI+NFZQOBSM69u5RFkciinwzV2eveY6Kjf5MzgsYvvl6kTStsj3JrXqkg=="
+      },
+      "FSharp.Core": {
+        "type": "Direct",
+        "requested": "[9.0.201, )",
+        "resolved": "9.0.201",
+        "contentHash": "Ozq4T0ISTkqTYJ035XW/JkdDDaXofbykvfyVwkjLSqaDZ/4uNXfpf92cjcMI9lf9CxWqmlWHScViPh/4AvnWcw=="
+      },
+      "FsHttp": {
+        "type": "Direct",
+        "requested": "[15.0.1, )",
+        "resolved": "15.0.1",
+        "contentHash": "Cl8x98XHSQuAJg0NXCSCFTWCfLYwi1VZ+mHISv7Cm78UJL/aXd/3neCT20GngR0aZVYsbekobDLaRGb3KV78Yw==",
+        "dependencies": {
+          "FSharp.Core": "5.0.2"
+        }
+      }
+    }
+  }
+}

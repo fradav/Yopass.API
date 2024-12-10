@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{900A5291-128C-4613-9647-224FD1D3A034}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Yopass", "src\Yopass\Yopass.fsproj", "{FA4F55FE-C01E-478D-A9FD-97FD173BA323}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Test.Yopass", "test\Test.Yopass.fsproj", "{DF98CA72-D53B-4113-B684-743906476EA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA4F55FE-C01E-478D-A9FD-97FD173BA323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA4F55FE-C01E-478D-A9FD-97FD173BA323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA4F55FE-C01E-478D-A9FD-97FD173BA323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA4F55FE-C01E-478D-A9FD-97FD173BA323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF98CA72-D53B-4113-B684-743906476EA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF98CA72-D53B-4113-B684-743906476EA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF98CA72-D53B-4113-B684-743906476EA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF98CA72-D53B-4113-B684-743906476EA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA4F55FE-C01E-478D-A9FD-97FD173BA323} = {900A5291-128C-4613-9647-224FD1D3A034}
+	EndGlobalSection
+EndGlobal

@@ -1,6 +1,6 @@
-﻿module Test.Yopass.CLI.Wrap
+﻿module Test.Yopass.API
+
 open Expecto
 
 [<EntryPoint>]
-let main argv =
-    Tests.runTestsInAssembly defaultConfig argv
+let main argv = runTestsInAssemblyWithCLIArgs [] argv
