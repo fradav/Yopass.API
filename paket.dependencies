@@ -1,9 +1,9 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
-nuget FSharp.Core >= 6.0 content: none
+nuget Fli
+nuget FSharp.Core
 
-group Test.Yopass.CLI.Wrap
-    nuget Expecto >= 9.0
-    nuget Microsoft.NET.Test.Sdk >= 17.0
-    nuget YoloDev.Expecto.TestSdk
+group Test.Yopass
+    source https://api.nuget.org/v3/index.json
+    nuget Expecto
