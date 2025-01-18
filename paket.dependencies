@@ -1,9 +1,13 @@
 source https://api.nuget.org/v3/index.json
 
 storage: none
-nuget Fli
-nuget FSharp.Core
+
+nuget BouncyCastle.Cryptography
+nuget FsHttp
 
 group Test.Yopass
     source https://api.nuget.org/v3/index.json
     nuget Expecto
+    nuget YoloDev.Expecto.TestSdk
+    nuget Microsoft.NET.Test.Sdk
+    nuget Testcontainers

@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Yopass.CLI", "src\Yopass.CLI.fsproj", "{963AE7A2-44AC-428F-8CC0-045C1AE3AF93}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{1D37036F-7C0B-4E67-9A17-DA6EE5E7A39E}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Test.Yopass.CLI", "test\Test.Yopass.fsproj", "{0CD5DC9D-332D-4438-8459-5BBEFD02AA0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3229CAA8-B0EE-42E5-87CF-53DD3798CE7F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Yopass", "src\Yopass\Yopass.fsproj", "{6B920E48-DE19-4552-8D53-4D42C4F98A8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,13 +23,16 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{963AE7A2-44AC-428F-8CC0-045C1AE3AF93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{963AE7A2-44AC-428F-8CC0-045C1AE3AF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{963AE7A2-44AC-428F-8CC0-045C1AE3AF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{963AE7A2-44AC-428F-8CC0-045C1AE3AF93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0CD5DC9D-332D-4438-8459-5BBEFD02AA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0CD5DC9D-332D-4438-8459-5BBEFD02AA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CD5DC9D-332D-4438-8459-5BBEFD02AA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CD5DC9D-332D-4438-8459-5BBEFD02AA0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B920E48-DE19-4552-8D53-4D42C4F98A8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B920E48-DE19-4552-8D53-4D42C4F98A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B920E48-DE19-4552-8D53-4D42C4F98A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B920E48-DE19-4552-8D53-4D42C4F98A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B920E48-DE19-4552-8D53-4D42C4F98A8A} = {3229CAA8-B0EE-42E5-87CF-53DD3798CE7F}
 	EndGlobalSection
 EndGlobal
