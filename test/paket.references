@@ -1,2 +1,5 @@
 group Test.Yopass
 Expecto
+YoloDev.Expecto.TestSdk
+Microsoft.NET.Test.Sdk
+Testcontainers
