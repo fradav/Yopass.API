@@ -40,7 +40,7 @@ type SetupYopassContainer(args) =
         let yopass = yopassWrapper container
         f yopass
 
-let yopassTest setup =
+let yopassTests setup =
     [ test "encrypt a simple string with a generated key and decrypt it" {
           setup (fun (yopass: Wrapper) ->
               let someKey = Crypt.generateKey ()
@@ -98,10 +98,10 @@ let yopassTest setup =
 let yopassContainerTests =
     SetupYopassContainer([])
     |> _.setupYopass
-    |> yopassTest
+    |> yopassTests
     |> testList "standard container"
 
-let yopassLongTest setup =
+let yopassLongTests setup =
     [ test "encrypt a (long) binary random data and decrypt it" {
           setup (fun (yopass: Wrapper) ->
               let input = Array.randomChoices 100000 [| 0uy .. 255uy |]
@@ -116,5 +116,5 @@ let yopassLongTest setup =
 let yopassLongContainerTests =
     SetupYopassContainer([ "--max-length=1000000" ])
     |> _.setupYopass
-    |> yopassLongTest
+    |> yopassLongTests
     |> testList "container with long data"
