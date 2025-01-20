@@ -63,7 +63,6 @@ type Wrapper(?api: string, ?url: string, ?expiration: int, ?key: string, ?oneTim
         with ex ->
             Error $"invalid URL: {ex.Message}"
 
-    member val Docker = Option.defaultValue true docker with get, set
     member val Api = Option.defaultValue "https://api.yopass.se" api with get, set
     member val Url = Option.defaultValue "https://yopass.se" url with get, set
     member val Expiration = Option.defaultValue (24 * 3600) expiration with get, set

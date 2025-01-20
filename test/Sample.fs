@@ -26,7 +26,7 @@ let yopassContainer args =
         // .WithOutputConsumer(Consume.RedirectStdoutAndStderrToConsole())
         .Build()
 
-let yopassWrapper (container: IContainer) =
+let containedYopassWrapper (container: IContainer) =
     let yopassURL =
         UriBuilder("http", container.Hostname, int (container.GetMappedPublicPort(1337))).Uri.ToString().TrimEnd('/')
 
@@ -37,7 +37,7 @@ type SetupYopassContainer(args) =
     do container.StartAsync().Wait()
 
     member x.setupYopass f =
-        let yopass = yopassWrapper container
+        let yopass = containedYopassWrapper container
         f yopass
 
 let yopassTests setup =
