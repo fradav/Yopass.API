@@ -1,0 +1,30 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"}]}}
+
+#!csharp
+
+#i "nuget:file:///Users/fradav/Documents/Old/Documents/Dev/dotnet/fsharp/Yopass.CLI.Wrap/.nuget"
+#r "nuget:Yopass"
+
+#!csharp
+
+using Yopass;
+using System;
+
+// Encrypting and Decrypting Secrets with on-the-fly key generation
+string secret = "my secret";
+Wrapper yopass = new Wrapper(url: "https://yopass.se", api: "https://api.yopass.se", expiration:3600, key: null, oneTime: true);
+string encryptedSecret = yopass.encrypt(secret);
+string decryptedSecret = yopass.decryptString(encryptedSecret);
+
+display($"Encrypted: {encryptedSecret}");
+display($"Decrypted: {decryptedSecret}");
+
+#!csharp
+
+yopass.Key = "mykey";
+encryptedSecret = yopass.encrypt(secret);
+display($"Encrypted: {encryptedSecret}");
+decryptedSecret = yopass.decryptString(encryptedSecret);
+display($"Decrypted: {decryptedSecret}");

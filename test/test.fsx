@@ -1,16 +1,16 @@
-#r "fsproj: ../src/Yopass.CLI.fsproj"
-open Yopass.CLI
-open System.IO
+// #i "nuget:file:///Users/fradav/Documents/Old/Documents/Dev/dotnet/fsharp/Yopass.CLI.Wrap/.nuget"
+// #r "nuget:Yopass"
+#r "fsproj: ../src/Yopass/Yopass.fsproj"
 
-// let imagUrl = "https://onesecret.imag.umontpellier.fr"
+open Yopass
 
-let yopassImag = Wrapper("http://host.docker.internal", "http://localhost", key = "test")
-let machinEncrypted = yopassImag.encrypt "machin"
-printfn "%s" machinEncrypted
-yopassImag.decrypt machinEncrypted |> printfn "%s"
+let yopass = Wrapper(key = "some key")
 
-let gitignoreEncryptedFile = yopassImag.encryptFile (Path.Combine(__SOURCE_DIRECTORY__, "test.fsx")) 
-printfn "%s" gitignoreEncryptedFile
-yopassImag.decrypt gitignoreEncryptedFile |> printfn "%s"
+let secret = "my secret"
 
-File.Exists (Path.Combine(__SOURCE_DIRECTORY__, "test.fsx"))
+let encrypted = secret |> yopass.encrypt
+let decrypted = encrypted |> yopass.decryptString
+
+printfn "Secret: %s" secret
+printfn "Encrypted: %s" encrypted
+printfn "Decrypted: %s" decrypted

@@ -40,7 +40,7 @@ open System
 
 type Secret = { message: string }
 
-type Wrapper(?api: string, ?url: string, ?expiration: int, ?key: string, ?oneTime: bool, ?docker: bool) =
+type Wrapper(?api: string, ?url: string, ?expiration: int, ?key: string, ?oneTime: bool) =
 
     /// Parses a Yopass URL and returns secret ID, key, file option flag, and key option flag
     let parseURL (s: string) : Result<string * string * bool * bool, string> =
@@ -98,6 +98,9 @@ type Wrapper(?api: string, ?url: string, ?expiration: int, ?key: string, ?oneTim
             + "/"
             + (if snd keygen then fst keygen else "")
 
+    member this.encrypt(message: string) =
+        message |> Encoding.UTF8.GetBytes |> this.encrypt
+
     member this.decrypt(url: string) =
         // Validate URL configuration
         if not (url.StartsWith(this.Url)) then
@@ -130,3 +133,6 @@ type Wrapper(?api: string, ?url: string, ?expiration: int, ?key: string, ?oneTim
             Crypt.decrypt msg decryptKey
         with ex ->
             failwith $"Failed to decrypt secret: {ex.Message}\nSecret is : {msg}\nKey is : {decryptKey}"
+
+    member this.decryptString message =
+        message |> this.decrypt |> Encoding.UTF8.GetString
