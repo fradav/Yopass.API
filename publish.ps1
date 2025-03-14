@@ -6,5 +6,5 @@ if ($existing -contains $version) {
     Write-Host "Tag $version already exists"
 } else {
     git tag v$version
-    git push origin main --tags
+    git push --tags
 }
