@@ -55,10 +55,10 @@ jobs:
           git fetch --tags
           if (git tag -l "v${{ steps.get-version.outputs.version }}") {
             echo "Tag already exists"
-            echo "tag_exists=true" >> $GITHUB_OUTPUT
+            echo "tag_exists=true" >> $env:GITHUB_OUTPUT
           } else {
             echo "Tag does not exist"
-            echo "tag_exists=false" >> $GITHUB_OUTPUT
+            echo "tag_exists=false" >> $env:$GITHUB_OUTPUT
           }
         shell: pwsh
 
