@@ -9,6 +9,7 @@
     <PackageTags>yopass;secrets;security</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <LangVersion>latest</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
