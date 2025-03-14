@@ -6,13 +6,7 @@ on:
       - "v*"
 
 jobs:
-  call-build:
-    uses: ./.github/workflows/build.yml
-    with:
-      upload-artifacts: true
-
   publish:
-    needs: call-build
     runs-on: ubuntu-latest
     steps:
       - name: Download build artifacts
