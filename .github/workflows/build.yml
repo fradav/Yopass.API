@@ -45,7 +45,7 @@ jobs:
         id: get-version
         shell: pwsh
         run: |
-          [xml]$props = Get-Content 'Directory.Build.props'
+          [xml]$props = Get-Content -path 'Directory.Build.props'
           $version = $props.Project.PropertyGroup.Version
           echo "version=$version" >> $env:GITHUB_OUTPUT
 
@@ -53,12 +53,12 @@ jobs:
         id: check-tag
         run: |
           git fetch --tags
-          if (git rev-parse "v${{ steps.get-version.outputs.version }}" 2>$null) {
-          echo "Tag already exists"
-          echo "tag_exists=true" >> $GITHUB_OUTPUT
+          if (git tag -l "v${{ steps.get-version.outputs.version }}") {
+            echo "Tag already exists"
+            echo "tag_exists=true" >> $GITHUB_OUTPUT
           } else {
-          echo "Tag does not exist"
-          echo "tag_exists=false" >> $GITHUB_OUTPUT
+            echo "Tag does not exist"
+            echo "tag_exists=false" >> $GITHUB_OUTPUT
           }
         shell: pwsh
 
