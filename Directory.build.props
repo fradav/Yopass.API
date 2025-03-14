@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <Version>0.9.1</Version>
+    <Version>0.9.4</Version>
     <Authors>François-David Collin</Authors>
     <Description>A .NET wrapper for interacting with the Yopass service</Description>
     <PackageProjectUrl>https://github.com/fradav/Yopass.API</PackageProjectUrl>
