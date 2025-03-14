@@ -1,6 +1,6 @@
 [![Nuget](https://img.shields.io/nuget/v/Yopass.API)](https://www.nuget.org/packages/Yopass.API)
 [![Nuget Downloads](https://img.shields.io/nuget/dt/Yopass.API)](https://www.nuget.org/packages/Yopass.API)
-[![Build Status](https://github.com/fradav/Yopass.API/actions/workflows/publish.yml/badge.svg)](https://github.com/fradav/Yopass.API/actions)
+[![Build Status](https://github.com/fradav/Yopass.API/actions/workflows/build.yml/badge.svg)](https://github.com/fradav/Yopass.API/actions)
 
 # Yopass.API
 
