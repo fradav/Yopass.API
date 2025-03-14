@@ -1,4 +1,4 @@
-﻿module Test.Yopass.CLI
+﻿module Test.Yopass.API
 
 open Expecto
 

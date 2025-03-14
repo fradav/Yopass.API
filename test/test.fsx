@@ -1,5 +1,3 @@
-// #i "nuget:file:///Users/fradav/Documents/Old/Documents/Dev/dotnet/fsharp/Yopass.CLI.Wrap/.nuget"
-// #r "nuget:Yopass"
 #r "fsproj: ../src/Yopass/Yopass.fsproj"
 
 open Yopass

@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <Version>0.9.0</Version>
+    <Authors>François-David Collin</Authors>
+    <Description>A .NET wrapper for interacting with the Yopass service</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/fradav/Yopass.API</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/fradav/Yopass.API</RepositoryUrl>
+    <PackageTags>yopass;secrets;security</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>

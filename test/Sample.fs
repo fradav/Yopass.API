@@ -28,7 +28,7 @@ let yopassContainer args =
 
 let containedYopassWrapper (container: IContainer) =
     let yopassURL =
-        UriBuilder("http", container.Hostname, int (container.GetMappedPublicPort(1337))).Uri.ToString().TrimEnd('/')
+        UriBuilder("http", container.Hostname, int(container.GetMappedPublicPort(1337))).Uri.ToString().TrimEnd('/')
 
     Wrapper(yopassURL, yopassURL)
 
@@ -40,59 +40,61 @@ type SetupYopassContainer(args) =
         let yopass = containedYopassWrapper container
         f yopass
 
-let yopassTests setup =
-    [ test "encrypt a simple string with a generated key and decrypt it" {
-          setup (fun (yopass: Wrapper) ->
-              let someKey = Crypt.generateKey ()
-              yopass.Key <- Some someKey
-              let input = "hello"
-              let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
-              let decrypted = encrypted |> yopass.decrypt |> Encoding.UTF8.GetString
+let yopassTests setup = [
+    test "encrypt a simple string with a generated key and decrypt it" {
+        setup(fun (yopass: Wrapper) ->
+            let someKey = Crypt.generateKey()
+            yopass.Key <- Some someKey
+            let input = "hello"
+            let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
+            let decrypted = encrypted |> yopass.decrypt |> Encoding.UTF8.GetString
 
-              Expect.equal input decrypted "The decrypted string should be the same as the input")
-      }
-      test "encrypt a simple string with a generated key and try do decrypt with the wrong key" {
-          setup (fun (yopass: Wrapper) ->
-              yopass.Key <- Some(Crypt.generateKey ())
-              let input = "hello"
-              let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
-              yopass.Key <- Some(Crypt.generateKey ())
+            Expect.equal input decrypted "The decrypted string should be the same as the input")
+    }
+    test "encrypt a simple string with a generated key and try do decrypt with the wrong key" {
+        setup(fun (yopass: Wrapper) ->
+            yopass.Key <- Some(Crypt.generateKey())
+            let input = "hello"
+            let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
+            yopass.Key <- Some(Crypt.generateKey())
 
-              let tryDecrypt =
-                  try
-                      encrypted |> yopass.decrypt |> ignore
-                      false
-                  with _ ->
-                      true
+            let tryDecrypt =
+                try
+                    encrypted |> yopass.decrypt |> ignore
+                    false
+                with _ ->
+                    true
 
-              Expect.isTrue tryDecrypt "This should fail because the key is wrong")
-      }
-      test "encrypt a simple string, no password and decrypt it (use the provided key)" {
-          setup (fun (yopass: Wrapper) ->
-              let input = "hello"
-              let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
-              let decrypted = encrypted |> yopass.decrypt |> Encoding.UTF8.GetString
+            Expect.isTrue tryDecrypt "This should fail because the key is wrong")
+    }
+    test "encrypt a simple string, no password and decrypt it (use the provided key)" {
+        setup(fun (yopass: Wrapper) ->
+            let input = "hello"
+            let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
+            let decrypted = encrypted |> yopass.decrypt |> Encoding.UTF8.GetString
 
-              Expect.equal input decrypted "The decrypted string should be the same as the input")
-      }
-      test "set onetime, encrypt a simple string, no password, decrypt it once and fail to decryt again" {
-          setup (fun (yopass: Wrapper) ->
-              yopass.OneTime <- true
-              let input = "hello"
-              let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
-              let decrypted = encrypted |> yopass.decrypt |> Encoding.UTF8.GetString
+            Expect.equal input decrypted "The decrypted string should be the same as the input")
+    }
+    test "set onetime, encrypt a simple string, no password, decrypt it once and fail to decryt again" {
+        setup(fun (yopass: Wrapper) ->
+            yopass.OneTime <- true
+            let input = "hello"
+            let encrypted = input |> Encoding.UTF8.GetBytes |> yopass.encrypt
+            let decrypted = encrypted |> yopass.decrypt |> Encoding.UTF8.GetString
 
-              Expect.equal input decrypted "The decrypted string should be the same as the input"
+            Expect.equal input decrypted "The decrypted string should be the same as the input"
 
-              let tryDecrypt =
-                  try
-                      encrypted |> yopass.decrypt |> ignore
-                      false
-                  with _ ->
-                      true
+            let tryDecrypt =
+                try
+                    encrypted |> yopass.decrypt |> ignore
+                    false
+                with _ ->
+                    true
 
-              Expect.isTrue tryDecrypt "This should fail because the secret is gone")
-      } ]
+            Expect.isTrue tryDecrypt "This should fail because the secret is gone")
+    }
+]
+
 
 [<Tests>]
 let yopassContainerTests =
@@ -101,16 +103,17 @@ let yopassContainerTests =
     |> yopassTests
     |> testList "standard container"
 
-let yopassLongTests setup =
-    [ test "encrypt a (long) binary random data and decrypt it" {
-          setup (fun (yopass: Wrapper) ->
-              let input = Array.randomChoices 100000 [| 0uy .. 255uy |]
+let yopassLongTests setup = [
+    test "encrypt a (long) binary random data and decrypt it" {
+        setup(fun (yopass: Wrapper) ->
+            let input = Array.randomChoices 100000 [| 0uy .. 255uy |]
 
-              let encrypted = input |> yopass.encrypt
-              let decrypted = encrypted |> yopass.decrypt
+            let encrypted = input |> yopass.encrypt
+            let decrypted = encrypted |> yopass.decrypt
 
-              Expect.equal input decrypted "The decrypted string should be the same as the input")
-      } ]
+            Expect.equal input decrypted "The decrypted string should be the same as the input")
+    }
+]
 
 [<Tests>]
 let yopassLongContainerTests =
