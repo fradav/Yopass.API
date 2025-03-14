@@ -58,7 +58,7 @@ jobs:
             echo "tag_exists=true" >> $env:GITHUB_OUTPUT
           } else {
             echo "Tag does not exist"
-            echo "tag_exists=false" >> $env:$GITHUB_OUTPUT
+            echo "tag_exists=false" >> $env:GITHUB_OUTPUT
           }
         shell: pwsh
 
