@@ -1,6 +1,12 @@
 name: Build and test
 on:
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      upload-artifacts:
+        description: 'Whether to upload build artifacts.'
+        required: false
+        default: false
+        type: boolean
   push:
     branches:
       - "main"
@@ -35,7 +41,7 @@ jobs:
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
-        if: ${{ github.event_name == 'workflow_call' }}
+        if: ${{ github.event.inputs.upload-artifacts == true }}
         with:
           name: build-artifacts
           path: ./artifacts
